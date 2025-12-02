@@ -72,6 +72,13 @@
         .prayer-badge.kids { background: linear-gradient(135deg, #fef3c7, #fce7f3); }
         .prayer-badge.teens { background: linear-gradient(135deg, #ede9fe, #fce7f3); }
         .prayer-badge.adults { background: linear-gradient(135deg, #d1fae5, #cffafe); }
+        .music-section { margin-top: 1.5rem; animation: fadeInUp 0.6s ease-out 0.4s both; }
+        .music-toggle { width: 100%; padding: 0.75rem 1rem; border: none; border-radius: 1rem; font-family: 'Fredoka', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; transition: all 0.3s ease; background: linear-gradient(135deg, #7c3aed, #ec4899); color: white; box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3); }
+        .music-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4); }
+        .music-toggle.active { background: linear-gradient(135deg, #059669, #10b981); box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3); }
+        .music-player { margin-top: 1rem; border-radius: 1rem; overflow: hidden; display: none; }
+        .music-player.show { display: block; }
+        .music-label { text-align: center; font-size: 0.8rem; color: #6b7280; margin-top: 0.5rem; }
         footer { text-align: center; margin-top: 1.5rem; animation: fadeInUp 0.6s ease-out 0.5s both; }
         .footer-text { font-size: 0.85rem; color: #92400e; }
         .day-counter { font-size: 0.75rem; color: #b45309; opacity: 0.7; }
@@ -118,6 +125,28 @@
                 <div class="prayer-prompt"><div class="prayer-badge kids" id="prayerBadge"><span>🙏</span><span>Take a moment to pray!</span></div></div>
             </div>
         </div>
+        
+        <div class="music-section">
+            <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">
+                <span>🎵</span>
+                <span id="musicBtnText">Listen to Christian Hits</span>
+                <span>🎧</span>
+            </button>
+            <div class="music-player" id="musicPlayer">
+                <iframe 
+                    style="border-radius:12px" 
+                    src="https://open.spotify.com/embed/playlist/1KRZH6WH8qYgaVnagjjOFV?utm_source=generator&theme=0" 
+                    width="100%" 
+                    height="352" 
+                    frameBorder="0" 
+                    allowfullscreen="" 
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                    loading="lazy">
+                </iframe>
+                <p class="music-label">🎤 Forrest Frank • TobyMac • Lecrae • Matthew West & more!</p>
+            </div>
+        </div>
+        
         <footer>
             <p class="footer-text">✨ Come back tomorrow for more sweet stuff! ✨</p>
             <p class="day-counter">Day <span id="dayNumber">1</span> of your faith journey</p>
@@ -1318,6 +1347,22 @@ function updateDevotional() {
 
     const today = new Date();
     document.getElementById('todayDate').textContent = today.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+}
+
+function toggleMusic() {
+    const player = document.getElementById('musicPlayer');
+    const btn = document.getElementById('musicToggle');
+    const btnText = document.getElementById('musicBtnText');
+    
+    if (player.classList.contains('show')) {
+        player.classList.remove('show');
+        btn.classList.remove('active');
+        btnText.textContent = 'Listen to Christian Hits';
+    } else {
+        player.classList.add('show');
+        btn.classList.add('active');
+        btnText.textContent = 'Hide Music Player';
+    }
 }
 
 function createFloatingShapes() {
