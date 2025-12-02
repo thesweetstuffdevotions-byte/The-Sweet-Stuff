@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sweet Stuff - Daily Devos by Isley</title>
+    <meta name="description" content="Fun daily devotionals for kids, teens, and adults. Hosted by Isley!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --honey-gold: #f59e0b;
+            --honey-light: #fef3c7;
+            --pink-pop: #ec4899;
+            --purple-fun: #a855f7;
+            --blue-sky: #3b82f6;
+            --green-fresh: #10b981;
+        }
+
+        body {
+            font-family: 'Quicksand', 'Fredoka', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body.kids {
+            background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 30%, #fce7f3 70%, #f5f3ff 100%);
+        }
+        body.teens {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 30%, #fce7f3 70%, #fdf2f8 100%);
+        }
+        body.adults {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 30%, #cffafe 70%, #f0fdfa 100%);
+        }
+
+        .container {
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Floating background elements */
+        .bg-floats {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .float-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes shimmer {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+            100% { opacity: 0.3; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        /* Header / Brand */
+        .brand-header {
+            text-align: center;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .honey-icon {
+            font-size: 3rem;
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
+            filter: drop-shadow(0 4px 6px rgba(245, 158, 11, 0.3));
+        }
+
+        .brand-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #f59e0b 0%, #ec4899 50%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0.25rem 0;
+            text-shadow: 0 2px 10px rgba(245, 158, 11, 0.2);
+        }
+
+        .brand-tagline {
+            font-size: 0.95rem;
+            color: #92400e;
+            font-weight: 500;
+        }
+
+        .host-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #fef3c7, #fce7f3);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            margin-top: 0.75rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            font-size: 0.85rem;
+            color: #9a3412;
+            font-weight: 600;
+        }
+
+        .host-badge .host-emoji {
+            font-size: 1.2rem;
+        }
+
+        /* Age Group Selector */
+        .age-selector {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            animation: fadeInUp 0.6s ease-out 0.1s both;
+        }
+
+        .age-btn {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 2rem;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .age-btn.kids {
+            background: linear-gradient(135deg, #fbbf24, #f97316);
+            color: white;
+        }
+        .age-btn.teens {
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            color: white;
+        }
+        .age-btn.adults {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        .age-btn:not(.active) {
+            opacity: 0.5;
+            transform: scale(0.95);
+        }
+        .age-btn.active {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Date Badge */
+        .date-badge {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        .date-badge-inner {
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            font-weight: 600;
+            color: #92400e;
+            font-size: 0.85rem;
+        }
+
+        /* Main Card */
+        .devo-card {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out 0.3s both;
+        }
+
+        /* Emoji Banner */
+        .emoji-banner {
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .emoji-banner.kids {
+            background: linear-gradient(135deg, #fbbf24, #f97316, #ec4899);
+        }
+        .emoji-banner.teens {
+            background: linear-gradient(135deg, #a855f7, #7c3aed, #ec4899);
+        }
+        .emoji-banner.adults {
+            background: linear-gradient(135deg, #10b981, #059669, #0891b2);
+        }
+
+        .main-emoji {
+            font-size: 4rem;
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+
+        .bg-emojis {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            opacity: 0.15;
+        }
+
+        .bg-emoji {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Card Content */
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .devo-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        /* Verse Card */
+        .verse-card {
+            border-radius: 1rem;
+            padding: 1.25rem;
+            position: relative;
+            margin-bottom: 1.25rem;
+            border: 2px solid;
+        }
+
+        .verse-card.kids {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border-color: #fcd34d;
+        }
+        .verse-card.teens {
+            background: linear-gradient(135deg, #faf5ff, #f3e8ff);
+            border-color: #c4b5fd;
+        }
+        .verse-card.adults {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            border-color: #6ee7b7;
+        }
+
+        .verse-label {
+            position: absolute;
+            top: -0.7rem;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: white;
+            white-space: nowrap;
+        }
+
+        .verse-label.kids { background: #f59e0b; }
+        .verse-label.teens { background: #8b5cf6; }
+        .verse-label.adults { background: #10b981; }
+
+        .verse-text {
+            text-align: center;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #374151;
+            line-height: 1.6;
+            margin-top: 0.5rem;
+        }
+
+        .verse-ref {
+            text-align: center;
+            font-weight: 700;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .verse-ref.kids { color: #d97706; }
+        .verse-ref.teens { color: #7c3aed; }
+        .verse-ref.adults { color: #059669; }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 1.25rem;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title.kids { color: #ec4899; }
+        .section-title.teens { color: #8b5cf6; }
+        .section-title.adults { color: #0d9488; }
+
+        .section-title .icon {
+            font-size: 1.25rem;
+        }
+
+        .section-text {
+            color: #4b5563;
+            line-height: 1.7;
+            padding-left: 1.75rem;
+            font-size: 0.95rem;
+        }
+
+        /* Activity Card */
+        .activity-card {
+            border-radius: 1rem;
+            padding: 1.25rem;
+            border: 2px dashed;
+            margin-bottom: 1.25rem;
+        }
+
+        .activity-card.kids {
+            background: linear-gradient(135deg, #fdf2f8, #fce7f3);
+            border-color: #f9a8d4;
+        }
+        .activity-card.teens {
+            background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+            border-color: #a78bfa;
+        }
+        .activity-card.adults {
+            background: linear-gradient(135deg, #cffafe, #a5f3fc);
+            border-color: #22d3ee;
+        }
+
+        /* Artist Quote */
+        .quote-card {
+            background: linear-gradient(135deg, #fefce8, #fef9c3);
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #eab308;
+            position: relative;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: -0.5rem;
+            left: 0.5rem;
+            font-size: 1.5rem;
+            opacity: 0.6;
+        }
+
+        .quote-text {
+            font-style: italic;
+            color: #713f12;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            padding-left: 0.5rem;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-weight: 700;
+            color: #a16207;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Prayer Prompt */
+        .prayer-prompt {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .prayer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+            color: #4b5563;
+        }
+
+        .prayer-badge.kids {
+            background: linear-gradient(135deg, #fef3c7, #fce7f3);
+        }
+        .prayer-badge.teens {
+            background: linear-gradient(135deg, #ede9fe, #fce7f3);
+        }
+        .prayer-badge.adults {
+            background: linear-gradient(135deg, #d1fae5, #cffafe);
+        }
+
+        .prayer-badge .pray-icon {
+            font-size: 1.25rem;
+        }
+
+        /* YouTube Link */
+        .youtube-link {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .youtube-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .youtube-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
+        }
+
+        .youtube-btn .yt-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            animation: fadeInUp 0.6s ease-out 0.5s both;
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+
+        .day-counter {
+            font-size: 0.75rem;
+            color: #b45309;
+            opacity: 0.7;
+        }
+
+        .isley-signature {
+            margin-top: 1rem;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem;
+            color: #a855f7;
+        }
+
+        /* Sparkles */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="kids">
+    <!-- Floating Background Shapes -->
+    <div class="bg-floats" id="bgFloats"></div>
+
+    <div class="container">
+        <!-- Brand Header -->
+        <header class="brand-header">
+            <div class="honey-icon">🍯</div>
+            <h1 class="brand-title">The Sweet Stuff</h1>
+            <p class="brand-tagline">Daily Devos for Kids, Teens & Adults</p>
+            <div class="host-badge">
+                <span class="host-emoji">💕</span>
+                <span>Hosted by Isley</span>
+                <span class="host-emoji">✨</span>
+            </div>
+        </header>
+
+        <!-- Age Group Selector -->
+        <div class="age-selector">
+            <button class="age-btn kids active" onclick="switchAgeGroup('kids')">👧 Kids</button>
+            <button class="age-btn teens" onclick="switchAgeGroup('teens')">🎧 Teens</button>
+            <button class="age-btn adults" onclick="switchAgeGroup('adults')">☕ Adults</button>
+        </div>
+
+        <!-- Date Badge -->
+        <div class="date-badge">
+            <div class="date-badge-inner">
+                <span>☀️</span>
+                <span id="todayDate"></span>
+            </div>
+        </div>
+
+        <!-- Main Devotional Card -->
+        <div class="devo-card">
+            <div class="emoji-banner kids" id="emojiBanner">
+                <div class="bg-emojis" id="bgEmojis"></div>
+                <span class="main-emoji" id="mainEmoji">💖</span>
+            </div>
+
+            <div class="card-content">
+                <h2 class="devo-title" id="devoTitle">Loading...</h2>
+
+                <!-- Verse Card -->
+                <div class="verse-card kids" id="verseCard">
+                    <div class="verse-label kids" id="verseLabel">📖 Today's Verse</div>
+                    <p class="verse-text" id="verseText">"..."</p>
+                    <p class="verse-ref kids" id="verseRef">—</p>
+                </div>
+
+                <!-- Message Section -->
+                <div class="section">
+                    <h3 class="section-title kids" id="messageTitle">
+                        <span class="icon">💭</span>
+                        <span id="messageTitleText">What Does This Mean?</span>
+                    </h3>
+                    <p class="section-text" id="messageText"></p>
+                </div>
+
+                <!-- Activity Card -->
+                <div class="activity-card kids" id="activityCard">
+                    <h3 class="section-title kids" id="activityTitle">
+                        <span class="icon">🎯</span>
+                        <span id="activityTitleText">Today's Challenge</span>
+                    </h3>
+                    <p class="section-text" id="activityText"></p>
+                </div>
+
+                <!-- Artist Quote -->
+                <div class="quote-card" id="quoteCard">
+                    <span class="quote-icon">💬</span>
+                    <p class="quote-text" id="quoteText"></p>
+                    <p class="quote-author" id="quoteAuthor"></p>
+                </div>
+
+                <!-- Prayer Prompt -->
+                <div class="prayer-prompt">
+                    <div class="prayer-badge kids" id="prayerBadge">
+                        <span class="pray-icon">🙏</span>
+                        <span>Take a moment to pray about today's message!</span>
+                    </div>
+                </div>
+
+                <!-- YouTube Link -->
+                <div class="youtube-link">
+                    <!-- UPDATE THIS URL when Isley's channel is ready! -->
+                    <a href="https://youtube.com/@IsleySweetStuff" target="_blank" class="youtube-btn" id="youtubeBtn">
+                        <span class="yt-icon">▶️</span>
+                        <span>Watch Isley on YouTube!</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p class="footer-text">✨ Come back tomorrow for more sweet stuff! ✨</p>
+            <p class="day-counter">Day <span id="dayNumber">1</span> of your faith journey</p>
+            <p class="isley-signature">Made with 💜 by Isley</p>
+        </footer>
+    </div>
+
+    <script>
+        // ============================================
+        // THE SWEET STUFF - Daily Devos by Isley
+        // ============================================
+
+        // Inspirational quotes from Christian artists
+        const artistQuotes = [
+            { text: "God gets all the glory. I'm just out here doing what I love and He keeps providing.", author: "Forrest Frank" },
+            { text: "Once I gave my life to Jesus, I'm complete. I don't need anything. I don't need any accolades.", author: "Forrest Frank" },
+            { text: "Life is so short. Whatever God has planned, I'm in.", author: "Forrest Frank" },
+            { text: "God's got my back, even when I fall or get attacked. Even when I'm low and full of lack.", author: "Forrest Frank" },
+            { text: "I just stay ground level. This entire time, I've stayed ground level.", author: "Forrest Frank" },
+            { text: "As long as I'm putting the truth of the Gospel in the songs, I know He's going to be doing the work.", author: "Forrest Frank" },
+            { text: "Jesus is my Savior, and I'm alive when I worship Him.", author: "Forrest Frank" },
+            { text: "I used to pray that I'd just get to write worship music for a living. That's all I ever wanted.", author: "Josiah Queen" },
+            { text: "God, I only have these songs. I'm trusting that this is the time You told me to do this.", author: "Josiah Queen" },
+            { text: "As soon as I took that step forward in faith, literally, God opened up all these opportunities.", author: "Josiah Queen" },
+            { text: "My biggest desire is to see people's lives changed for Jesus.", author: "Josiah Queen" },
+            { text: "God truly has made it easy to praise.", author: "Josiah Queen" },
+            { text: "God's been faithful in surrounding me with people who work hard and believe in the music.", author: "Josiah Queen" },
+            { text: "Faith extends beyond our feelings — we make a choice that our faith is going to extend beyond what we feel.", author: "Matthew West" },
+            { text: "Every day someone tells me their story. Everyone has a story.", author: "Matthew West" },
+            { text: "I doubted my faith at times, but God was always in charge.", author: "Matthew West" },
+            { text: "You can do all things through Christ who gives you strength.", author: "Matthew West" },
+            { text: "I don't want to go through the motions of life. I want to live fully for God.", author: "Matthew West" },
+            { text: "Focusing on the negative only makes a difficult journey more difficult.", author: "TobyMac" },
+            { text: "Speak life to the deadest, darkest night. Speak life when the sun won't shine.", author: "TobyMac" },
+            { text: "When you fall, we lose our way; we get back up again. It's never too late to get back up again.", author: "TobyMac" },
+            { text: "May I never forget, on my best days, that I need God as desperately as I did on my worst days.", author: "TobyMac" },
+            { text: "Raise your thoughts a little higher, use your words to inspire.", author: "TobyMac" },
+            { text: "I am passionate about God, about Jesus, and what His influence does to me.", author: "TobyMac" },
+            { text: "I'm not a Christian because I'm strong. I'm a Christian because I'm weak and admit I need a Savior.", author: "Lecrae" },
+            { text: "If you live for people's acceptance, you will die from their rejection.", author: "Lecrae" },
+            { text: "People will hurt you. But don't use that as an excuse for your poor choices, use it as motivation to make the right ones.", author: "Lecrae" },
+            { text: "God gave you your own race to run. Stop comparing yourself to other people.", author: "Lecrae" },
+            { text: "If people throw stones at you, pick 'em up and build something.", author: "Lecrae" },
+            { text: "Better to have a small role in God's story than to cast yourself as the lead in your own fiction.", author: "Lecrae" },
+            { text: "Trials show us where we are and where we need to grow. Don't run from them, grow from them.", author: "Lecrae" },
+            { text: "God loves you right where you are, but He loves you too much to leave you there.", author: "Unknown" },
+            { text: "Your story isn't over. The best chapters are still being written.", author: "Unknown" },
+            { text: "You are never too young to make a difference for Jesus.", author: "Unknown" },
+            { text: "Be the kind of person that makes others feel like they matter.", author: "Unknown" }
+        ];
+
+        // DEVOTIONALS DATA
+        const devotionals = {
+            kids: [
+                {
+                    title: "God's Amazing Love",
+                    verse: "For God so loved the world that he gave his one and only Son.",
+                    reference: "John 3:16",
+                    message: "Did you know God loves you more than all the stars in the sky? His love is so big, it never runs out! Today, try to show love to someone around you.",
+                    activity: "Draw a picture of something you love, and thank God for it!",
+                    emoji: "💖"
+                },
+                {
+                    title: "Be Brave!",
+                    verse: "Be strong and courageous. Do not be afraid.",
+                    reference: "Joshua 1:9",
+                    message: "Sometimes things can feel scary - like starting something new or being in the dark. But guess what? God is always with you, like a superhero friend who never leaves!",
+                    activity: "Think of one brave thing you can do today, even if it feels a little scary.",
+                    emoji: "🦁"
+                },
+                {
+                    title: "Kindness Counts",
+                    verse: "Be kind to one another.",
+                    reference: "Ephesians 4:32",
+                    message: "Kindness is like sprinkles on ice cream - it makes everything better! When we're kind, we show others what God's love looks like.",
+                    activity: "Do 3 secret acts of kindness today without telling anyone!",
+                    emoji: "🌈"
+                },
+                {
+                    title: "You Are Special",
+                    verse: "I am fearfully and wonderfully made.",
+                    reference: "Psalm 139:14",
+                    message: "God didn't make anyone else exactly like YOU! Your laugh, your smile, your ideas - they're all special gifts. You're God's masterpiece!",
+                    activity: "Look in a mirror and say 'God made me special!' 3 times.",
+                    emoji: "⭐"
+                },
+                {
+                    title: "Helper Hands",
+                    verse: "Serve one another humbly in love.",
+                    reference: "Galatians 5:13",
+                    message: "Our hands can do amazing things! We can use them to help, hug, create, and serve others. That's how we can be like Jesus.",
+                    activity: "Help someone with a chore without being asked today!",
+                    emoji: "🙌"
+                },
+                {
+                    title: "Thankful Heart",
+                    verse: "Give thanks to the Lord, for he is good.",
+                    reference: "Psalm 107:1",
+                    message: "Having a thankful heart is like having sunshine inside you! When we notice all the good things God gives us, our hearts feel happy.",
+                    activity: "Name 5 things you're thankful for before breakfast!",
+                    emoji: "🌻"
+                },
+                {
+                    title: "Peace Inside",
+                    verse: "Peace I leave with you; my peace I give you.",
+                    reference: "John 14:27",
+                    message: "When you feel worried or upset, take a deep breath. God's peace is like a warm blanket for your heart. He's got everything under control!",
+                    activity: "Take 5 deep breaths and whisper 'God gives me peace' each time.",
+                    emoji: "🕊️"
+                },
+                {
+                    title: "Shine Bright",
+                    verse: "Let your light shine before others.",
+                    reference: "Matthew 5:16",
+                    message: "You have a special light inside you - God's love! When you're kind, honest, and loving, that light shines out and helps others see how wonderful God is.",
+                    activity: "Smile at 5 people today and watch their faces light up too!",
+                    emoji: "✨"
+                },
+                {
+                    title: "Best Friends Forever",
+                    verse: "A friend loves at all times.",
+                    reference: "Proverbs 17:17",
+                    message: "Good friends are such a blessing! And here's amazing news: Jesus wants to be your best friend forever. You can talk to Him anytime!",
+                    activity: "Draw a picture for a friend or write them a nice note.",
+                    emoji: "🤗"
+                },
+                {
+                    title: "God Listens",
+                    verse: "The Lord hears when I call to him.",
+                    reference: "Psalm 4:3",
+                    message: "You don't need a phone to talk to God - He hears every prayer! Whether you whisper, shout, or just think it, God is always listening.",
+                    activity: "Find a quiet spot and tell God about your day.",
+                    emoji: "🙏"
+                },
+                {
+                    title: "Joy Joy Joy!",
+                    verse: "The joy of the Lord is your strength.",
+                    reference: "Nehemiah 8:10",
+                    message: "Joy is different from just being happy - it's a deep-down good feeling that stays even when things are hard. God's joy makes us strong!",
+                    activity: "Do a happy dance and thank God for the joy He gives!",
+                    emoji: "🎉"
+                },
+                {
+                    title: "Trust and Believe",
+                    verse: "Trust in the Lord with all your heart.",
+                    reference: "Proverbs 3:5",
+                    message: "Trusting God is like holding your parent's hand when you cross the street. You know they'll keep you safe. God is even more trustworthy!",
+                    activity: "Close your eyes and fall backwards into your pillow - that's what trusting God feels like!",
+                    emoji: "💫"
+                },
+                {
+                    title: "Forgiveness Power",
+                    verse: "Forgive as the Lord forgave you.",
+                    reference: "Colossians 3:13",
+                    message: "When someone hurts our feelings, it's hard to forgive. But forgiveness is like letting go of a heavy backpack - it makes YOUR heart feel lighter!",
+                    activity: "If you're upset with someone, pray for them and let it go.",
+                    emoji: "💝"
+                },
+                {
+                    title: "God's Creation",
+                    verse: "God saw all that he had made, and it was very good.",
+                    reference: "Genesis 1:31",
+                    message: "Look around! Trees, animals, clouds, rainbows - God made all of it! And He made YOU to enjoy and take care of His beautiful world.",
+                    activity: "Go outside and find 3 amazing things God created.",
+                    emoji: "🌎"
+                },
+                {
+                    title: "Tell the Truth",
+                    verse: "Speak the truth in love.",
+                    reference: "Ephesians 4:15",
+                    message: "Telling the truth can be hard sometimes, but it's always the right thing to do. God loves honesty, and it helps people trust you!",
+                    activity: "Practice being honest in every conversation today.",
+                    emoji: "💎"
+                },
+                {
+                    title: "Patience Power",
+                    verse: "Be patient, bearing with one another in love.",
+                    reference: "Ephesians 4:2",
+                    message: "Waiting is SO hard! But patience is like a superpower. While we wait, God is working on amazing things we can't even see yet.",
+                    activity: "Practice patience by waiting 10 seconds before you answer a question today.",
+                    emoji: "🐢"
+                },
+                {
+                    title: "Helping Others",
+                    verse: "Carry each other's burdens.",
+                    reference: "Galatians 6:2",
+                    message: "When someone is sad or having a hard time, we can help! Even just being there or saying something nice can make a huge difference.",
+                    activity: "Ask someone 'How are you really feeling today?' and listen carefully.",
+                    emoji: "🤝"
+                },
+                {
+                    title: "No Fear!",
+                    verse: "When I am afraid, I put my trust in you.",
+                    reference: "Psalm 56:3",
+                    message: "Everyone feels scared sometimes - even grown-ups! The good news is we can tell God about our fears and He promises to help us through.",
+                    activity: "Write down something that scares you, then write 'God is bigger!' next to it.",
+                    emoji: "🛡️"
+                },
+                {
+                    title: "Obey with Joy",
+                    verse: "Children, obey your parents in the Lord.",
+                    reference: "Ephesians 6:1",
+                    message: "When we listen to our parents and teachers, we're actually showing love to God too! Obedience keeps us safe and helps us grow wise.",
+                    activity: "Say 'yes!' right away the next time you're asked to do something.",
+                    emoji: "👂"
+                },
+                {
+                    title: "Share the Love",
+                    verse: "Give generously.",
+                    reference: "Deuteronomy 15:10",
+                    message: "Sharing is caring! When we share our toys, time, or snacks, we're being like God - He shares SO many good things with us!",
+                    activity: "Share something special with a friend or sibling today.",
+                    emoji: "🎁"
+                },
+                {
+                    title: "God's Protection",
+                    verse: "The Lord is my shepherd; I shall not want.",
+                    reference: "Psalm 23:1",
+                    message: "Just like a shepherd protects and cares for sheep, God takes care of you! He makes sure you have everything you need.",
+                    activity: "Thank God for 3 ways He takes care of you.",
+                    emoji: "🐑"
+                },
+                {
+                    title: "Words Matter",
+                    verse: "Let your conversation be always full of grace.",
+                    reference: "Colossians 4:6",
+                    message: "Our words are powerful! Kind words can make someone's whole day better. Mean words can really hurt. Let's choose words that spread love!",
+                    activity: "Give 3 genuine compliments to people today.",
+                    emoji: "💬"
+                },
+                {
+                    title: "New Every Morning",
+                    verse: "His mercies are new every morning.",
+                    reference: "Lamentations 3:23",
+                    message: "Every single day is a fresh start! Even if yesterday was hard, today is brand new. God's love and forgiveness are waiting for you each morning.",
+                    activity: "When you wake up tomorrow, say 'Thank you God for this new day!'",
+                    emoji: "🌅"
+                },
+                {
+                    title: "Stand Strong",
+                    verse: "Stand firm in the faith.",
+                    reference: "1 Corinthians 16:13",
+                    message: "Sometimes people might make fun of us for loving God. But standing up for what's right makes us strong! God is proud of you.",
+                    activity: "Think of one way you can show you love God at school or with friends.",
+                    emoji: "💪"
+                },
+                {
+                    title: "Rest in God",
+                    verse: "Come to me, all you who are weary, and I will give you rest.",
+                    reference: "Matthew 11:28",
+                    message: "Even kids get tired sometimes! God wants you to know you can always come to Him when you need a break. He'll give your heart peace.",
+                    activity: "Lie down, close your eyes, and imagine resting in God's love like a cozy cloud.",
+                    emoji: "😴"
+                },
+                {
+                    title: "Ask for Wisdom",
+                    verse: "If any of you lacks wisdom, you should ask God.",
+                    reference: "James 1:5",
+                    message: "Not sure what to do? Ask God! He loves giving wisdom to help us make good choices. He's the smartest friend you could ever have!",
+                    activity: "Before making a choice today, stop and ask God to help you decide.",
+                    emoji: "🦉"
+                },
+                {
+                    title: "Love Your Neighbor",
+                    verse: "Love your neighbor as yourself.",
+                    reference: "Mark 12:31",
+                    message: "Your 'neighbor' is everyone around you - at home, school, the park! Treating others the way you want to be treated is showing God's love.",
+                    activity: "Do something nice for a neighbor or classmate you don't usually talk to.",
+                    emoji: "🏠"
+                },
+                {
+                    title: "Sing for Joy!",
+                    verse: "Sing to the Lord a new song!",
+                    reference: "Psalm 96:1",
+                    message: "God loves it when we sing to Him - even if we think we're not great singers! Your joyful voice is beautiful to Him.",
+                    activity: "Make up your own silly song thanking God for something!",
+                    emoji: "🎵"
+                },
+                {
+                    title: "Dreams and Plans",
+                    verse: "For I know the plans I have for you, declares the Lord.",
+                    reference: "Jeremiah 29:11",
+                    message: "God has amazing plans for YOUR life! He knows what you'll be when you grow up, the friends you'll have, and the adventures ahead.",
+                    activity: "Draw a picture of what you dream of being someday and show it to God in prayer.",
+                    emoji: "🚀"
+                },
+                {
+                    title: "Always There",
+                    verse: "Never will I leave you; never will I forsake you.",
+                    reference: "Hebrews 13:5",
+                    message: "No matter what happens - good days, bad days, scary days, fun days - God is ALWAYS with you. You're never alone!",
+                    activity: "Whenever you feel alone today, whisper 'God is here with me.'",
+                    emoji: "🌟"
+                },
+                {
+                    title: "Gentle Spirit",
+                    verse: "A gentle answer turns away wrath.",
+                    reference: "Proverbs 15:1",
+                    message: "When someone is angry or mean, being gentle back is like magic - it can calm everything down! Gentleness is a superpower.",
+                    activity: "Practice using a calm, gentle voice even when you feel frustrated.",
+                    emoji: "🌸"
+                }
+            ],
+            teens: [
+                {
+                    title: "You Are Loved",
+                    verse: "See what great love the Father has lavished on us, that we should be called children of God!",
+                    reference: "1 John 3:1",
+                    message: "In a world of likes, follows, and comments, it's easy to measure your worth by numbers. But here's the truth: God's love for you isn't based on your performance, your looks, or your popularity. You are deeply, unconditionally loved exactly as you are right now.",
+                    activity: "Put your phone down for 30 minutes and journal about what makes you valuable beyond social media.",
+                    emoji: "💜"
+                },
+                {
+                    title: "Anxiety Doesn't Win",
+                    verse: "Cast all your anxiety on him because he cares for you.",
+                    reference: "1 Peter 5:7",
+                    message: "School pressure, friend drama, future worries - it can feel overwhelming. But God invites you to literally throw your anxieties onto Him. He's strong enough to carry what feels too heavy for you. You don't have to figure it all out alone.",
+                    activity: "Write down 3 things stressing you out, then pray over each one and physically crumple up the paper.",
+                    emoji: "🌊"
+                },
+                {
+                    title: "Real Identity",
+                    verse: "For we are God's masterpiece. He has created us anew in Christ Jesus.",
+                    reference: "Ephesians 2:10",
+                    message: "The world will try to label you - popular, weird, smart, dumb, pretty, plain. But those labels don't define you. God calls you His masterpiece. Not a rough draft. Not a work in progress. A masterpiece. That's who you really are.",
+                    activity: "List 5 negative labels you've believed about yourself, then cross them out and write what God says instead.",
+                    emoji: "🎨"
+                },
+                {
+                    title: "Peer Pressure",
+                    verse: "Do not conform to the pattern of this world, but be transformed by the renewing of your mind.",
+                    reference: "Romans 12:2",
+                    message: "Fitting in feels so important. But sometimes the crowd is headed somewhere you don't want to go. It takes real courage to be different. The good news? God gives you the strength to stand firm and be authentically you.",
+                    activity: "Think of one area where you've been following the crowd. Ask God for courage to be different.",
+                    emoji: "🦅"
+                },
+                {
+                    title: "When You Mess Up",
+                    verse: "If we confess our sins, he is faithful and just and will forgive us our sins.",
+                    reference: "1 John 1:9",
+                    message: "You're going to make mistakes. Bad decisions. Regrettable choices. That's part of being human. But failure isn't final with God. His forgiveness is real, complete, and always available. You can start fresh as many times as you need.",
+                    activity: "Confess something you've been carrying guilt about. Accept God's forgiveness and let it go.",
+                    emoji: "🔄"
+                },
+                {
+                    title: "Purpose in the Pain",
+                    verse: "And we know that in all things God works for the good of those who love him.",
+                    reference: "Romans 8:28",
+                    message: "Life isn't fair. Bad things happen to good people. But even in the darkest moments, God is working. He doesn't waste your pain - He can use it to shape you, grow you, and eventually help others through you.",
+                    activity: "Think about a hard time you've gone through. How has it made you stronger or more compassionate?",
+                    emoji: "🌱"
+                },
+                {
+                    title: "Real Friends",
+                    verse: "As iron sharpens iron, so one person sharpens another.",
+                    reference: "Proverbs 27:17",
+                    message: "The people you surround yourself with matter more than you realize. Real friends lift you up, challenge you to be better, and stick around when things get hard. It's better to have 2 genuine friends than 200 fake ones.",
+                    activity: "Text a friend who makes you a better person and tell them you appreciate them.",
+                    emoji: "⚔️"
+                },
+                {
+                    title: "Digital Detox",
+                    verse: "Be still, and know that I am God.",
+                    reference: "Psalm 46:10",
+                    message: "Constant notifications, endless scrolling, comparison traps - our phones can keep us from hearing God's voice. Sometimes the most spiritual thing you can do is put down your device and just... be still.",
+                    activity: "Spend 15 minutes in silence - no phone, no music. Just you and God.",
+                    emoji: "📵"
+                },
+                {
+                    title: "Your Words Have Power",
+                    verse: "The tongue has the power of life and death.",
+                    reference: "Proverbs 18:21",
+                    message: "That comment you post, that text you send, that thing you say behind someone's back - words stick. They can build people up or tear them down. Choose to be someone who speaks life, encouragement, and truth.",
+                    activity: "Send an encouraging message to 3 different people today. Be specific about what you appreciate.",
+                    emoji: "💬"
+                },
+                {
+                    title: "Trusting God's Timing",
+                    verse: "There is a time for everything, and a season for every activity under the heavens.",
+                    reference: "Ecclesiastes 3:1",
+                    message: "Waiting is brutal when you want something NOW. A relationship, a breakthrough, an answer. But God's timing is perfect even when it doesn't feel like it. What feels like delay might actually be preparation.",
+                    activity: "What are you waiting for? Write a prayer surrendering the timing to God.",
+                    emoji: "⏰"
+                },
+                {
+                    title: "Body Image Truth",
+                    verse: "You created my inmost being; you knit me together in my mother's womb.",
+                    reference: "Psalm 139:13",
+                    message: "Filters, edited photos, impossible standards - they mess with how you see yourself. But God designed your body on purpose. Your height, your features, your unique look - it's not a mistake. You are carefully and wonderfully made.",
+                    activity: "Look in the mirror and thank God for 3 specific things about how He made you.",
+                    emoji: "🪞"
+                },
+                {
+                    title: "When God Feels Far",
+                    verse: "The Lord is close to the brokenhearted and saves those who are crushed in spirit.",
+                    reference: "Psalm 34:18",
+                    message: "Sometimes God feels distant. Prayers feel like they hit the ceiling. Doubt creeps in. But feelings aren't always facts. God promises He's closest when you're hurting most, even if you can't feel Him.",
+                    activity: "Write an honest letter to God about how you're really feeling. He can handle it.",
+                    emoji: "🌫️"
+                },
+                {
+                    title: "Courage Over Comfort",
+                    verse: "Have I not commanded you? Be strong and courageous. Do not be afraid.",
+                    reference: "Joshua 1:9",
+                    message: "Growth happens outside your comfort zone. That conversation you're avoiding, that risk you're scared to take, that dream that feels too big - God didn't give you a spirit of fear. He gave you power.",
+                    activity: "What's one thing you've been avoiding out of fear? Take one small step toward it today.",
+                    emoji: "🔥"
+                },
+                {
+                    title: "Grace for Others",
+                    verse: "Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.",
+                    reference: "Ephesians 4:32",
+                    message: "People will hurt you. Disappoint you. Let you down. Holding grudges feels justified but it only poisons you. Forgiveness doesn't mean what they did was okay - it means you're choosing freedom over bitterness.",
+                    activity: "Is there someone you need to forgive? Even if you're not ready to talk to them, release them in prayer.",
+                    emoji: "🕊️"
+                },
+                {
+                    title: "Finding Your Purpose",
+                    verse: "For we are God's handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.",
+                    reference: "Ephesians 2:10",
+                    message: "You're not just here to exist, get good grades, and pay bills someday. God has specific things for you to do - good works He planned before you were born. Your gifts, passions, and experiences all point toward your purpose.",
+                    activity: "What do you love doing that also helps others? That intersection might be a clue to your calling.",
+                    emoji: "🧭"
+                },
+                {
+                    title: "Mental Health Matters",
+                    verse: "He gives strength to the weary and increases the power of the weak.",
+                    reference: "Isaiah 40:29",
+                    message: "Struggling mentally doesn't mean you lack faith. Depression, anxiety, and other challenges are real. God cares about your mental health. It's okay to get help. It's okay to not be okay. Reaching out is strength, not weakness.",
+                    activity: "If you're struggling, tell one trusted person today. If you're doing well, check in on a friend who might not be.",
+                    emoji: "🧠"
+                },
+                {
+                    title: "Influence > Popularity",
+                    verse: "Let your light shine before others, that they may see your good deeds and glorify your Father in heaven.",
+                    reference: "Matthew 5:16",
+                    message: "You don't need a million followers to make a difference. The people right in front of you - classmates, teammates, siblings - are watching how you live. Your everyday kindness and integrity can change someone's life.",
+                    activity: "How can you positively influence one person in your life today? Do it.",
+                    emoji: "💡"
+                },
+                {
+                    title: "Dating & Relationships",
+                    verse: "Above all else, guard your heart, for everything you do flows from it.",
+                    reference: "Proverbs 4:23",
+                    message: "Relationships can be amazing or destructive depending on who and how. Guarding your heart doesn't mean building walls - it means being wise about who you let in and how fast. You deserve someone who honors you.",
+                    activity: "What are your non-negotiables in a relationship? Write them down before you need them.",
+                    emoji: "💕"
+                },
+                {
+                    title: "Your Story Matters",
+                    verse: "They triumphed over him by the blood of the Lamb and by the word of their testimony.",
+                    reference: "Revelation 12:11",
+                    message: "Your story - the struggles, the victories, the lessons - is powerful. Someday, sharing what you've been through could be exactly what someone else needs to hear. Nothing in your life is wasted.",
+                    activity: "Write down a hard experience you've overcome. How might sharing it help someone else?",
+                    emoji: "📖"
+                },
+                {
+                    title: "Integrity When No One's Watching",
+                    verse: "Whoever walks in integrity walks securely.",
+                    reference: "Proverbs 10:9",
+                    message: "Who you are when no one's watching is who you really are. Those private choices - what you look at online, how you treat people who can't benefit you, whether you cheat when you could - they shape your character.",
+                    activity: "Check yourself: Is there anything you do privately that you'd be embarrassed for others to know?",
+                    emoji: "🔒"
+                },
+                {
+                    title: "Comparison Trap",
+                    verse: "Each one should test their own actions. Then they can take pride in themselves alone, without comparing themselves to someone else.",
+                    reference: "Galatians 6:4",
+                    message: "Scrolling through highlight reels makes your behind-the-scenes feel boring. But comparison steals joy and distorts reality. You're running your own race. Focus on becoming the best version of YOU.",
+                    activity: "Unfollow or mute one account that makes you feel inadequate. Replace that time with something that builds you up.",
+                    emoji: "🏃"
+                },
+                {
+                    title: "God's Got Your Future",
+                    verse: "'For I know the plans I have for you,' declares the Lord, 'plans to prosper you and not to harm you, plans to give you hope and a future.'",
+                    reference: "Jeremiah 29:11",
+                    message: "College, career, relationships, where you'll live - the future can feel terrifying. But God isn't stressed about your future. He already knows what's ahead and He's preparing you for it right now.",
+                    activity: "Instead of worrying about 5 years from now, ask God: 'What's my next step?' Focus on that.",
+                    emoji: "🌅"
+                },
+                {
+                    title: "Serving Others",
+                    verse: "For even the Son of Man did not come to be served, but to serve.",
+                    reference: "Mark 10:45",
+                    message: "In a 'me-first' world, serving feels countercultural. But there's something powerful about putting others first. It shifts your focus from your problems to their needs. And somehow, serving others fills you up.",
+                    activity: "Do something for someone else today with zero expectation of getting anything back.",
+                    emoji: "🤲"
+                },
+                {
+                    title: "When Faith Gets Hard",
+                    verse: "I believe; help my unbelief!",
+                    reference: "Mark 9:24",
+                    message: "Doubt doesn't disqualify you. Questions don't make you a bad Christian. Faith is a journey with ups and downs. Even Jesus' disciples struggled to believe sometimes. Bring your honest doubts to God - He's not afraid of them.",
+                    activity: "What's one question or doubt you've been afraid to admit? Talk to God or a trusted mentor about it.",
+                    emoji: "🌙"
+                },
+                {
+                    title: "Gratitude Changes Everything",
+                    verse: "Give thanks in all circumstances; for this is God's will for you in Christ Jesus.",
+                    reference: "1 Thessalonians 5:18",
+                    message: "Gratitude isn't just nice - it's powerful. It rewires your brain, shifts your perspective, and fights off negativity. Even on hard days, there's something to be thankful for. Finding it changes everything.",
+                    activity: "Before bed tonight, write down 10 specific things you're grateful for from today.",
+                    emoji: "🙏"
+                },
+                {
+                    title: "Standing Alone",
+                    verse: "If God is for us, who can be against us?",
+                    reference: "Romans 8:31",
+                    message: "Sometimes following God means standing alone. Not everyone will understand your choices. Not everyone will approve. But when you know God is with you, you can stand firm even when you're standing by yourself.",
+                    activity: "Think of a time you stood alone for something right. Thank God for that courage.",
+                    emoji: "🏔️"
+                },
+                {
+                    title: "Loving Difficult People",
+                    verse: "Love your enemies and pray for those who persecute you.",
+                    reference: "Matthew 5:44",
+                    message: "There will always be people who annoy you, hurt you, or seem impossible to love. But Jesus calls us to love them anyway - not because they deserve it, but because we've received love we didn't deserve too.",
+                    activity: "Pray genuinely for someone you struggle to like. Ask God to bless them.",
+                    emoji: "😬"
+                },
+                {
+                    title: "Your Mind Matters",
+                    verse: "Finally, brothers and sisters, whatever is true, whatever is noble, whatever is right, whatever is pure, whatever is lovely, whatever is admirable—think about such things.",
+                    reference: "Philippians 4:8",
+                    message: "What you consume shapes how you think. The music, videos, posts, and conversations you take in affect your mind. Guard what you let in - fill your mind with things that make you better, not bitter.",
+                    activity: "Audit your media diet. What's one thing you should consume less of? What should replace it?",
+                    emoji: "🧘"
+                },
+                {
+                    title: "Everyday Faith",
+                    verse: "Whatever you do, work at it with all your heart, as working for the Lord.",
+                    reference: "Colossians 3:23",
+                    message: "Following Jesus isn't just about Sundays. It's about how you do homework, treat your family, show up to practice, and handle boring tasks. Every moment is a chance to honor God with excellence and integrity.",
+                    activity: "Pick one 'boring' task today and do it excellently, as if God were your audience.",
+                    emoji: "📚"
+                },
+                {
+                    title: "You Belong",
+                    verse: "You are a chosen people, a royal priesthood, a holy nation, God's special possession.",
+                    reference: "1 Peter 2:9",
+                    message: "Feeling like you don't belong anywhere is one of the loneliest feelings. But in God's family, you have a place. You're chosen. You're wanted. You belong to something bigger than any clique or group.",
+                    activity: "Reach out to someone else who might feel like they don't belong. Include them.",
+                    emoji: "👑"
+                }
+            ],
+            adults: [
+                {
+                    title: "Sufficient Grace",
+                    verse: "My grace is sufficient for you, for my power is made perfect in weakness.",
+                    reference: "2 Corinthians 12:9",
+                    message: "In a world that celebrates strength and self-sufficiency, admitting weakness feels dangerous. Yet Paul discovered something profound: when we stop pretending to have it all together, God's power shows up most beautifully. Your limitations aren't liabilities—they're the very places where grace flows.",
+                    activity: "Identify one area where you've been striving in your own strength. Surrender it to God today and ask for His sufficient grace.",
+                    emoji: "🕯️"
+                },
+                {
+                    title: "The Gift of Today",
+                    verse: "This is the day that the Lord has made; let us rejoice and be glad in it.",
+                    reference: "Psalm 118:24",
+                    message: "We spend so much energy regretting yesterday or anxiously planning for tomorrow that we miss the gift right in front of us. Today—with its ordinary moments, mundane tasks, and quiet blessings—is a sacred gift. What if we actually lived like we believed that?",
+                    activity: "Set 3 phone alarms today. When they go off, pause for 30 seconds to notice something good about this moment.",
+                    emoji: "🌄"
+                },
+                {
+                    title: "Faithful in Little",
+                    verse: "Whoever can be trusted with very little can also be trusted with much.",
+                    reference: "Luke 16:10",
+                    message: "We often wait for the big opportunity, the significant role, the dramatic calling. But kingdom math works differently. Faithfulness in the unseen, ordinary moments is what prepares us for greater responsibility. The small yeses matter.",
+                    activity: "What small, unglamorous responsibility have you been neglecting? Give it your full attention today.",
+                    emoji: "🌾"
+                },
+                {
+                    title: "Loving the Unlovable",
+                    verse: "But I tell you, love your enemies and pray for those who persecute you.",
+                    reference: "Matthew 5:44",
+                    message: "This is perhaps Jesus' most difficult command. Not tolerate your enemies. Not avoid your enemies. Love them. Pray for them. This kind of love is impossible without supernatural help—which is exactly the point. It's meant to drive us to our knees.",
+                    activity: "Name someone who frustrates or has hurt you. Pray a genuine blessing over their life—their family, their work, their wellbeing.",
+                    emoji: "🌿"
+                },
+                {
+                    title: "The Anchor Holds",
+                    verse: "We have this hope as an anchor for the soul, firm and secure.",
+                    reference: "Hebrews 6:19",
+                    message: "When circumstances shift, relationships disappoint, and the ground beneath your feet feels unstable, you need something fixed to hold onto. Our hope in Christ isn't wishful thinking—it's an anchor that holds firm when everything else is moving.",
+                    activity: "What feels uncertain in your life right now? Write it down, then write 'Jesus is my anchor' over it.",
+                    emoji: "⚓"
+                },
+                {
+                    title: "Words of Life",
+                    verse: "The tongue has the power of life and death.",
+                    reference: "Proverbs 18:21",
+                    message: "Consider how long a careless criticism can linger in someone's mind—years, decades even. Consider also how an unexpected word of encouragement can carry someone through their darkest day. Your words hold more weight than you know.",
+                    activity: "Write a text, note, or email to someone who needs encouragement. Be specific about what you appreciate.",
+                    emoji: "✍️"
+                },
+                {
+                    title: "Holy Rest",
+                    verse: "Come to me, all you who are weary and burdened, and I will give you rest.",
+                    reference: "Matthew 11:28",
+                    message: "Burnout isn't a badge of honor. Exhaustion isn't next to godliness. God designed rest into creation itself—it's not laziness, it's obedience. Sometimes the most spiritual thing you can do is take a nap, take a walk, or simply stop striving.",
+                    activity: "Schedule 30 minutes of complete rest today—no phone, no productivity. Just be.",
+                    emoji: "🛋️"
+                },
+                {
+                    title: "The Ministry of Presence",
+                    verse: "Rejoice with those who rejoice; mourn with those who mourn.",
+                    reference: "Romans 12:15",
+                    message: "We often feel pressure to fix, advise, or solve when people are hurting. But sometimes the greatest gift is simply showing up. Being present. Sitting in silence. Holding space for someone's pain without trying to rush them through it.",
+                    activity: "Think of someone going through a hard time. Reach out with no agenda except to let them know you're thinking of them.",
+                    emoji: "🤝"
+                },
+                {
+                    title: "Generous Living",
+                    verse: "Give, and it will be given to you. A good measure, pressed down, shaken together and running over.",
+                    reference: "Luke 6:38",
+                    message: "Scarcity whispers that there's never enough—never enough money, time, or energy to share. But God's economy is abundance. Generosity doesn't deplete us; paradoxically, it expands us. The tighter we grip, the less we have.",
+                    activity: "Be generous in an unexpected way today—with money, time, or encouragement. Give beyond what's comfortable.",
+                    emoji: "🎁"
+                },
+                {
+                    title: "Surrendered Control",
+                    verse: "Trust in the Lord with all your heart and lean not on your own understanding.",
+                    reference: "Proverbs 3:5",
+                    message: "Control is an illusion we cling to with white knuckles. We plan, strategize, and worry as if our grip on life determines the outcome. But true peace comes from open hands—trusting that God's understanding far exceeds our limited view.",
+                    activity: "What are you trying to control that isn't yours to manage? Practice open-handed prayer, releasing it to God.",
+                    emoji: "🙌"
+                },
+                {
+                    title: "Beauty in the Waiting",
+                    verse: "Wait for the Lord; be strong and take heart and wait for the Lord.",
+                    reference: "Psalm 27:14",
+                    message: "Our culture hates waiting. We want instant answers, immediate results, fast solutions. But God often works in the waiting—developing patience, building trust, refining character. The waiting room isn't wasted time; it's formation time.",
+                    activity: "What are you waiting for right now? Instead of rushing past it, ask God what He wants to teach you in this season.",
+                    emoji: "🌱"
+                },
+                {
+                    title: "Kingdom Perspective",
+                    verse: "Set your minds on things above, not on earthly things.",
+                    reference: "Colossians 3:2",
+                    message: "It's easy to get consumed by temporary concerns—the promotion, the inconvenience, the slight. But when we zoom out to an eternal perspective, what seems urgent often shrinks to its proper size. We're citizens of a Kingdom that never ends.",
+                    activity: "Identify one concern that's been consuming your mental energy. Ask: 'How will this matter in 100 years?'",
+                    emoji: "👁️"
+                },
+                {
+                    title: "Rooted Faith",
+                    verse: "Blessed is the one who trusts in the Lord, whose confidence is in him. They will be like a tree planted by the water.",
+                    reference: "Jeremiah 17:7-8",
+                    message: "Deep roots don't happen overnight. They grow slowly, through drought and storm, reaching down into the soil of God's faithfulness. A rooted faith doesn't mean absence of hardship—it means steadiness within it.",
+                    activity: "What spiritual practice could help you put down deeper roots? Commit to it for the next 30 days.",
+                    emoji: "🌳"
+                },
+                {
+                    title: "Humble Dependence",
+                    verse: "Apart from me you can do nothing.",
+                    reference: "John 15:5",
+                    message: "This is humbling, isn't it? Nothing. Not 'very little' or 'less than optimal'—nothing of eternal value. Yet rather than discouraging, this truth liberates. We don't have to muster results in our own strength. We simply stay connected to the Vine.",
+                    activity: "Start your work today by praying: 'Lord, without You I can do nothing. Work through me.'",
+                    emoji: "🍇"
+                },
+                {
+                    title: "Forgiving Freely",
+                    verse: "Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.",
+                    reference: "Ephesians 4:32",
+                    message: "Unforgiveness is drinking poison and expecting the other person to suffer. It chains us to the past and to the one who hurt us. Forgiveness doesn't mean what they did was okay—it means we're choosing freedom over bitterness, healing over resentment.",
+                    activity: "Is there anyone you need to forgive? Not for their sake, but for yours—release them to God.",
+                    emoji: "🔓"
+                },
+                {
+                    title: "Sacred Ordinary",
+                    verse: "Whatever you do, work at it with all your heart, as working for the Lord, not for human masters.",
+                    reference: "Colossians 3:23",
+                    message: "We divide life into 'sacred' and 'secular,' but God doesn't see it that way. The email you write, the meal you cook, the meeting you lead—all of it can be worship. Every ordinary moment is an opportunity to glorify God.",
+                    activity: "Pick one routine task today. Before you do it, pray: 'This is for You, Lord.'",
+                    emoji: "🏠"
+                },
+                {
+                    title: "Carried Through",
+                    verse: "When you pass through the waters, I will be with you; and when you pass through the rivers, they will not sweep over you.",
+                    reference: "Isaiah 43:2",
+                    message: "Notice: 'when' not 'if.' Difficulty is promised. But drowning is not. God doesn't always remove us from hard circumstances—instead, He walks through them with us, ensuring they don't overwhelm us. His presence is our protection.",
+                    activity: "Recall a season when God carried you through something hard. Thank Him specifically for His faithfulness.",
+                    emoji: "🌊"
+                },
+                {
+                    title: "Kingdom Priorities",
+                    verse: "But seek first his kingdom and his righteousness, and all these things will be given to you as well.",
+                    reference: "Matthew 6:33",
+                    message: "We spend so much energy chasing security, success, and significance—things Jesus says to stop worrying about. The invitation is to a radically reordered life: pursue God's Kingdom first, and watch Him handle everything else.",
+                    activity: "Look at your calendar this week. Does it reflect 'Kingdom first'? What needs to shift?",
+                    emoji: "⚖️"
+                },
+                {
+                    title: "The God Who Sees",
+                    verse: "She gave this name to the Lord who spoke to her: 'You are the God who sees me.'",
+                    reference: "Genesis 16:13",
+                    message: "Hagar—used, abandoned, and alone in the wilderness—discovered something profound: God saw her. In your moments of invisibility, when you feel overlooked and forgotten, know this: the God who named every star knows your name. You are seen.",
+                    activity: "Where do you feel unseen right now? Tell God about it. He's listening. He sees.",
+                    emoji: "👀"
+                },
+                {
+                    title: "Courageous Obedience",
+                    verse: "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.",
+                    reference: "Joshua 1:9",
+                    message: "Courage isn't absence of fear—it's obedience in spite of fear. God doesn't ask us to feel brave before we act. He asks us to step forward in faith, trusting that His presence goes with us into the unknown.",
+                    activity: "What obedient step have you been avoiding because of fear? What would it look like to take it this week?",
+                    emoji: "🦁"
+                },
+                {
+                    title: "Pruned for Growth",
+                    verse: "He cuts off every branch in me that bears no fruit, while every branch that does bear fruit he prunes so that it will be even more fruitful.",
+                    reference: "John 15:2",
+                    message: "Pruning hurts. It feels like loss. But in God's hands, what's removed is never arbitrary—it's purposeful. He's making room for greater fruitfulness. Sometimes the cutting away is the kindest thing He can do.",
+                    activity: "What might God be pruning from your life? Instead of resisting, ask Him what He wants to grow in its place.",
+                    emoji: "✂️"
+                },
+                {
+                    title: "Community Matters",
+                    verse: "Two are better than one, because they have a good return for their labor: If either of them falls down, one can help the other up.",
+                    reference: "Ecclesiastes 4:9-10",
+                    message: "Isolation is the enemy of spiritual health. We were designed for connection—real, vulnerable, inconvenient community. Not just Sunday attendance, but life-on-life relationships where we're known, loved, and challenged.",
+                    activity: "Who knows the real you? If you can't name someone, make a plan to deepen one friendship.",
+                    emoji: "👥"
+                },
+                {
+                    title: "Eternal Investment",
+                    verse: "Store up for yourselves treasures in heaven, where moths and vermin do not destroy, and where thieves do not break in and steal.",
+                    reference: "Matthew 6:20",
+                    message: "Everything we accumulate here will eventually decay, depreciate, or be left behind. But investments in people, in the Kingdom, in eternal things—these compound forever. How different would our priorities look if we really believed this?",
+                    activity: "Consider one way you could invest in something eternal this week—a relationship, a ministry, someone's spiritual growth.",
+                    emoji: "💎"
+                },
+                {
+                    title: "Unlikely Joy",
+                    verse: "Consider it pure joy, my brothers and sisters, whenever you face trials of many kinds.",
+                    reference: "James 1:2",
+                    message: "This isn't masochistic positivity—it's radical trust. James isn't saying trials feel good. He's saying we can have joy anyway because we know God is working through hardship, producing perseverance, maturity, and completeness.",
+                    activity: "What trial are you facing? Instead of just enduring it, ask God what He's producing in you through it.",
+                    emoji: "🌧️"
+                },
+                {
+                    title: "Confident Access",
+                    verse: "Let us then approach God's throne of grace with confidence, so that we may receive mercy and find grace to help us in our time of need.",
+                    reference: "Hebrews 4:16",
+                    message: "We don't have to clean up before approaching God. We don't have to earn our way into His presence. Because of Jesus, we can come boldly—not arrogantly, but confidently. The throne we approach is a throne of grace, not judgment.",
+                    activity: "Bring your biggest need to God right now—boldly, honestly. He invites you to come.",
+                    emoji: "👑"
+                },
+                {
+                    title: "Undivided Heart",
+                    verse: "Teach me your way, Lord, that I may rely on your faithfulness; give me an undivided heart, that I may fear your name.",
+                    reference: "Psalm 86:11",
+                    message: "We are pulled in a thousand directions—loyalties, desires, priorities all competing for first place. The psalmist's prayer acknowledges something important: only God can give us an undivided heart. It's not something we manufacture; it's something we receive.",
+                    activity: "Pray Psalm 86:11 slowly. What is dividing your heart? Name it. Ask God for integration.",
+                    emoji: "❤️"
+                },
+                {
+                    title: "Steadfast Love",
+                    verse: "The steadfast love of the Lord never ceases; his mercies never come to an end; they are new every morning.",
+                    reference: "Lamentations 3:22-23",
+                    message: "These words were written in utter devastation—Jerusalem destroyed, hope seemingly lost. Yet from the rubble comes this profound declaration: God's love is steadfast. Unshaken. New every single morning. No matter what yesterday held.",
+                    activity: "Before your feet hit the floor tomorrow morning, whisper: 'His mercies are new today.'",
+                    emoji: "🌅"
+                },
+                {
+                    title: "The Work of Waiting",
+                    verse: "But they who wait for the Lord shall renew their strength; they shall mount up with wings like eagles.",
+                    reference: "Isaiah 40:31",
+                    message: "Waiting on God isn't passive resignation—it's active trust. It's choosing to believe He's working when we can't see evidence. It's staying expectant when circumstances suggest giving up. And in that waiting, strength is mysteriously renewed.",
+                    activity: "What promise are you waiting on God to fulfill? Write it down. Keep it somewhere visible as a reminder to wait actively.",
+                    emoji: "🦅"
+                },
+                {
+                    title: "Peace That Passes Understanding",
+                    verse: "And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.",
+                    reference: "Philippians 4:7",
+                    message: "This peace doesn't make logical sense—that's the point. It shows up in circumstances where anxiety should rule. It guards like a soldier when chaos storms the gates. It's not the peace of resolved situations, but the peace of a trusted Father.",
+                    activity: "Instead of rehearsing your anxieties, practice handing each one to God. Receive His peace.",
+                    emoji: "🌿"
+                },
+                {
+                    title: "Love in Action",
+                    verse: "Dear children, let us not love with words or speech but with actions and in truth.",
+                    reference: "1 John 3:18",
+                    message: "Love is a verb. It's not a feeling we wait for—it's a choice we make. Real love gets inconvenient, costs something, and shows up in tangible ways. Anyone can say 'I love you.' The question is: what are we doing about it?",
+                    activity: "Choose one person in your life. How can you tangibly love them today—not just in words, but in action?",
+                    emoji: "🛠️"
+                }
+            ]
+        };
+
+        // State
+        let currentAgeGroup = 'kids';
+
+        // Helper functions
+        function getDayOfYear() {
+            const now = new Date();
+            const start = new Date(now.getFullYear(), 0, 0);
+            const diff = now - start;
+            const oneDay = 1000 * 60 * 60 * 24;
+            return Math.floor(diff / oneDay);
+        }
+
+        function formatDate() {
+            return new Date().toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
+
+        function getRandomQuote() {
+            return artistQuotes[Math.floor(Math.random() * artistQuotes.length)];
+        }
+
+        function updateDevotional() {
+            const dayOfYear = getDayOfYear();
+            const devos = devotionals[currentAgeGroup];
+            const devotionalIndex = dayOfYear % devos.length;
+            const devo = devos[devotionalIndex];
+            const quote = artistQuotes[(dayOfYear + devotionalIndex) % artistQuotes.length];
+
+            // Update content
+            document.getElementById('todayDate').textContent = formatDate();
+            document.getElementById('mainEmoji').textContent = devo.emoji;
+            document.getElementById('devoTitle').textContent = devo.title;
+            document.getElementById('verseText').textContent = `"${devo.verse}"`;
+            document.getElementById('verseRef').textContent = `— ${devo.reference}`;
+            document.getElementById('messageText').textContent = devo.message;
+            document.getElementById('activityText').textContent = devo.activity;
+            document.getElementById('dayNumber').textContent = dayOfYear;
+            document.getElementById('quoteText').textContent = `"${quote.text}"`;
+            document.getElementById('quoteAuthor').textContent = `— ${quote.author}`;
+
+            // Update message/activity titles based on age group
+            if (currentAgeGroup === 'kids') {
+                document.getElementById('messageTitleText').textContent = "What Does This Mean?";
+                document.getElementById('activityTitleText').textContent = "Today's Challenge";
+            } else if (currentAgeGroup === 'teens') {
+                document.getElementById('messageTitleText').textContent = "Real Talk";
+                document.getElementById('activityTitleText').textContent = "Your Move";
+            } else {
+                document.getElementById('messageTitleText').textContent = "Reflection";
+                document.getElementById('activityTitleText').textContent = "Application";
+            }
+
+            // Update classes for styling
+            document.body.className = currentAgeGroup;
+            
+            const elementsToUpdate = [
+                'emojiBanner', 'verseCard', 'verseLabel', 'verseRef',
+                'messageTitle', 'activityCard', 'activityTitle', 'prayerBadge'
+            ];
+            
+            elementsToUpdate.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.classList.remove('kids', 'teens', 'adults');
+                    el.classList.add(currentAgeGroup);
+                }
+            });
+
+            // Update age selector buttons
+            document.querySelectorAll('.age-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.classList.contains(currentAgeGroup)) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Update background emojis
+            const bgEmojis = document.getElementById('bgEmojis');
+            bgEmojis.innerHTML = '';
+            for (let i = 0; i < 6; i++) {
+                const span = document.createElement('span');
+                span.className = 'bg-emoji';
+                span.textContent = devo.emoji;
+                span.style.left = `${10 + i * 15}%`;
+                span.style.top = `${20 + (i % 2) * 30}%`;
+                span.style.animationDelay = `${i * 0.3}s`;
+                bgEmojis.appendChild(span);
+            }
+        }
+
+        function switchAgeGroup(group) {
+            currentAgeGroup = group;
+            updateDevotional();
+        }
+
+        function createBackgroundElements() {
+            const bgFloats = document.getElementById('bgFloats');
+            const colors = ['#fef08a', '#fbcfe8', '#bfdbfe', '#bbf7d0', '#c4b5fd', '#fecaca'];
+            
+            // Create floating shapes
+            for (let i = 0; i < 8; i++) {
+                const shape = document.createElement('div');
+                shape.className = 'float-shape';
+                shape.style.width = `${40 + Math.random() * 60}px`;
+                shape.style.height = shape.style.width;
+                shape.style.background = colors[Math.floor(Math.random() * colors.length)];
+                shape.style.top = `${Math.random() * 100}%`;
+                shape.style.left = `${Math.random() * 100}%`;
+                shape.style.animationDuration = `${4 + Math.random() * 4}s`;
+                shape.style.animationDelay = `${Math.random() * 3}s`;
+                bgFloats.appendChild(shape);
+            }
+
+            // Create sparkles
+            for (let i = 0; i < 15; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.textContent = '✦';
+                sparkle.style.top = `${Math.random() * 100}%`;
+                sparkle.style.left = `${Math.random() * 100}%`;
+                sparkle.style.color = `rgba(251, 191, 36, ${0.3 + Math.random() * 0.4})`;
+                sparkle.style.fontSize = `${10 + Math.random() * 14}px`;
+                sparkle.style.animationDuration = `${1.5 + Math.random() * 2}s`;
+                sparkle.style.animationDelay = `${Math.random() * 2}s`;
+                bgFloats.appendChild(sparkle);
+            }
+        }
+
+        // Initialize
+        createBackgroundElements();
+        updateDevotional();
+    </script>
+</body>
+</html>
