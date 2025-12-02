@@ -763,31 +763,18 @@ function shareVia(platform) {
     const url = 'https://thesweetstuffdevotions-byte.github.io/The-Sweet-Stuff/';
     const shareText = `${verse} ${ref}
 
-✨ Get your daily devotional at The Sweet Stuff! 🍯
+🍯 The Sweet Stuff Daily Devos
 ${url}`;
-    const shortText = `${verse} ${ref} - Check out The Sweet Stuff Daily Devos! 🍯 ${url}`;
+    const shortText = `${verse} ${ref} 🍯 ${url}`;
     
     switch(platform) {
         case 'sms':
-            // Try Web Share API first (works best on mobile)
-            if (navigator.share) {
-                navigator.share({
-                    title: 'The Sweet Stuff Daily Devo',
-                    text: shareText,
-                    url: url
-                }).catch(() => {
-                    // If share fails, copy to clipboard
-                    navigator.clipboard.writeText(shareText);
-                    alert('Copied! 📋 Open your messages app and paste to share!');
-                });
-            } else {
-                // Fallback: detect iOS vs Android
-                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-                const smsUrl = isIOS 
-                    ? `sms:&body=${encodeURIComponent(shareText)}`
-                    : `sms:?body=${encodeURIComponent(shareText)}`;
-                window.location.href = smsUrl;
-            }
+            // Detect iOS vs Android for correct SMS format
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            const smsUrl = isIOS 
+                ? `sms:&body=${encodeURIComponent(shareText)}`
+                : `sms:?body=${encodeURIComponent(shareText)}`;
+            window.location.href = smsUrl;
             break;
         case 'instagram':
             navigator.clipboard.writeText(shareText);
