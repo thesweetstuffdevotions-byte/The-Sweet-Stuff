@@ -452,6 +452,38 @@
             .order-section { padding: 30px 20px; }
             .btn { display: block; margin: 15px 0; }
         }
+
+        /* Section Dividers */
+        .section-divider {
+            text-align: center;
+            margin: 60px 0 40px;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--honey), transparent);
+        }
+
+        .section-divider span {
+            background: var(--cream);
+            padding: 0 25px;
+            position: relative;
+            font-size: 2rem;
+            color: var(--honey-dark);
+            font-weight: 700;
+        }
+
+        .section-divider .section-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
@@ -488,6 +520,9 @@
         </section>
 
         <!-- Product -->
+        <div class="section-divider">
+            <span><span class="section-icon">🛍️</span>The Bracelet</span>
+        </div>
         <section class="products" style="display: flex; justify-content: center;">
             <div class="product-card" style="border: 4px solid var(--honey); width: 100%; max-width: 600px;">
                 <div class="product-image" style="background: linear-gradient(135deg, var(--honey-light), #FEF3C7);">
@@ -503,8 +538,10 @@
         </section>
 
         <!-- Lifestyle Gallery -->
-        <section style="margin: 50px 0;">
-            <h2 style="text-align: center; font-size: 2rem; color: var(--honey-dark); margin-bottom: 30px;">🍯 Perfect for Everyone!</h2>
+        <div class="section-divider">
+            <span><span class="section-icon">📸</span>See It In Action</span>
+        </div>
+        <section style="margin: 0 0 50px;">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
                 <img src="lifestyle1.png" alt="Teens and adults wearing Sweet Stuff faith bracelets" style="width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
                 <img src="lifestyle2.png" alt="Kids wearing Sweet Stuff faith bracelets" style="width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
@@ -512,9 +549,10 @@
         </section>
 
         <!-- Devotional Preview -->
-        <section style="margin: 50px 0;">
-            <h2 style="text-align: center; font-size: 2rem; color: var(--honey-dark); margin-bottom: 10px;">📖 See What You Get!</h2>
-            <p style="text-align: center; color: #666; margin-bottom: 30px;">Here's a sample of one daily devotional:</p>
+        <div class="section-divider">
+            <span><span class="section-icon">📖</span>Sample Devotional</span>
+        </div>
+        <section style="margin: 0 0 50px;">
             
             <div style="background: linear-gradient(135deg, #FEF3C7, #FDE68A); padding: 30px; border-radius: 25px; max-width: 500px; margin: 0 auto; box-shadow: 0 15px 50px rgba(245,158,11,0.2);">
                 <!-- Sample Devotional -->
@@ -552,9 +590,11 @@
         </section>
 
         <!-- Music Section -->
-        <section style="margin: 50px 0; text-align: center;">
-            <h2 style="font-size: 2rem; color: var(--honey-dark); margin-bottom: 10px;">🎵 Built-In Christian Music!</h2>
-            <p style="color: #666; margin-bottom: 25px;">Every bracelet gives you access to worship music too:</p>
+        <div class="section-divider">
+            <span><span class="section-icon">🎵</span>Built-In Music</span>
+        </div>
+        <section style="margin: 0 0 50px; text-align: center;">
+            <p style="color: #666; margin-bottom: 25px;">Every bracelet gives you access to worship music too!</p>
             
             <div style="background: white; padding: 30px; border-radius: 25px; max-width: 400px; margin: 0 auto; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcb6CQIjdqKy?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -564,8 +604,10 @@
         </section>
 
         <!-- What's Included -->
-        <section class="included">
-            <h2>🍯 What You Get With Every Bracelet</h2>
+        <div class="section-divider">
+            <span><span class="section-icon">✨</span>What's Included</span>
+        </div>
+        <section class="included" style="margin-top: 0;">
             
             <!-- 3 Age Groups Highlight -->
             <div style="background: linear-gradient(135deg, var(--honey-light), #FDE68A); padding: 30px; border-radius: 20px; margin-bottom: 30px;">
@@ -625,7 +667,10 @@
         </section>
 
         <!-- Pricing -->
-        <section class="pricing">
+        <div class="section-divider">
+            <span><span class="section-icon">💰</span>Pricing</span>
+        </div>
+        <section class="pricing" style="margin-top: 0;">
             <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
                 <div style="background: rgba(255,255,255,0.15); padding: 30px 40px; border-radius: 20px;">
                     <p style="font-size: 1.2rem; margin-bottom: 10px;">📦 SHIPPED</p>
@@ -642,8 +687,10 @@
         </section>
 
         <!-- Order -->
-        <section class="order-section">
-            <h2>How To Order</h2>
+        <div class="section-divider">
+            <span><span class="section-icon">🛒</span>Order Now</span>
+        </div>
+        <section class="order-section" style="margin-top: 0;">
             
             <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin: 30px 0;">
                 <!-- Shipping Option -->
