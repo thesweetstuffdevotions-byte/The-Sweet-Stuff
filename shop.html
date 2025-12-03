@@ -12,6 +12,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         :root {
             --honey: #F59E0B;
             --honey-dark: #D97706;
@@ -484,6 +488,12 @@
             display: block;
             margin-bottom: 5px;
         }
+
+        /* Age card hover effect */
+        .age-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
     </style>
 </head>
 <body>
@@ -510,100 +520,21 @@
         <!-- Hero -->
         <section class="hero">
             <h2>Faith Bracelets with NFC Technology</h2>
-            <p>More than a bracelet — it's a daily reminder to grow in faith! Tap your phone to the bracelet and instantly access a full year of devotionals, a prayer journal, Christian music, and more!</p>
-            <div class="nfc-badge">📱 Tap Phone → Instant Devotionals!</div>
             
-            <!-- NFC Demo Image -->
-            <div style="margin-top: 30px;">
+            <!-- NFC Demo Image - NOW FIRST -->
+            <div style="margin: 25px 0;">
                 <img src="nfc-demo.png" alt="Tap your phone to The Sweet Stuff bracelet to access daily devotionals" style="max-width: 100%; border-radius: 20px; box-shadow: 0 15px 50px rgba(0,0,0,0.2);">
             </div>
-        </section>
-
-        <!-- Product -->
-        <div class="section-divider">
-            <span><span class="section-icon">🛍️</span>The Bracelet</span>
-        </div>
-        <section class="products" style="display: flex; justify-content: center;">
-            <div class="product-card" style="border: 4px solid var(--honey); width: 100%; max-width: 600px;">
-                <div class="product-image" style="background: linear-gradient(135deg, var(--honey-light), #FEF3C7);">
-                    🍯
-                    <span class="product-badge">NFC</span>
-                </div>
-                <div class="product-info" style="text-align: center;">
-                    <h3 style="color: var(--honey-dark);">The Sweet Stuff Bracelet</h3>
-                    <p>Stylish woven faith bracelet with built-in NFC chip. Tap your phone to instantly access 365 daily devotionals, prayer journal, Christian music & more!</p>
-                    <span class="reversible-tag">✝️ Wear Your Faith Daily!</span>
-                </div>
+            
+            <p style="font-size: 1.3rem; max-width: 550px; margin: 0 auto;">Tap your phone to the bracelet → Instantly access <strong>365 daily devotionals</strong>, prayer journal, Christian music & more!</p>
+            
+            <!-- Order Now Button -->
+            <div style="margin-top: 30px;">
+                <a href="#order" class="btn btn-venmo" style="font-size: 1.4rem; padding: 20px 60px;">🛒 Order Now - Starting at $5!</a>
             </div>
         </section>
 
-        <!-- Lifestyle Gallery -->
-        <div class="section-divider">
-            <span><span class="section-icon">📸</span>See It In Action</span>
-        </div>
-        <section style="margin: 0 0 50px;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                <img src="lifestyle1.png" alt="Teens and adults wearing Sweet Stuff faith bracelets" style="width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
-                <img src="lifestyle2.png" alt="Kids wearing Sweet Stuff faith bracelets" style="width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
-            </div>
-        </section>
-
-        <!-- Devotional Preview -->
-        <div class="section-divider">
-            <span><span class="section-icon">📖</span>Sample Devotional</span>
-        </div>
-        <section style="margin: 0 0 50px;">
-            
-            <div style="background: linear-gradient(135deg, #FEF3C7, #FDE68A); padding: 30px; border-radius: 25px; max-width: 500px; margin: 0 auto; box-shadow: 0 15px 50px rgba(245,158,11,0.2);">
-                <!-- Sample Devotional -->
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <span style="font-size: 40px;">🌟</span>
-                    <h3 style="color: var(--honey-dark); font-size: 1.5rem; margin: 10px 0;">You Are Loved</h3>
-                </div>
-                
-                <!-- Verse Card -->
-                <div style="background: white; padding: 20px; border-radius: 15px; margin-bottom: 20px; border-left: 4px solid var(--honey);">
-                    <p style="font-style: italic; color: var(--dark); font-size: 1.1rem; line-height: 1.6;">"For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life."</p>
-                    <p style="color: var(--honey-dark); font-weight: 600; margin-top: 10px;">— John 3:16 (ESV)</p>
-                </div>
-                
-                <!-- What Does This Mean -->
-                <div style="background: rgba(255,255,255,0.7); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
-                    <h4 style="color: var(--purple); margin-bottom: 8px;">💭 What Does This Mean?</h4>
-                    <p style="color: var(--dark); font-size: 0.95rem; line-height: 1.5;">God loves you SO much that He sent Jesus just for you! No matter what happens, nothing can change how much God loves you. You are precious to Him!</p>
-                </div>
-                
-                <!-- Today's Challenge -->
-                <div style="background: rgba(255,255,255,0.7); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
-                    <h4 style="color: var(--pink); margin-bottom: 8px;">⭐ Today's Challenge</h4>
-                    <p style="color: var(--dark); font-size: 0.95rem; line-height: 1.5;">Tell someone today "God loves you!" - it might be exactly what they need to hear! 💛</p>
-                </div>
-                
-                <!-- Quote -->
-                <div style="text-align: center; padding: 15px; background: var(--honey); border-radius: 12px;">
-                    <p style="color: white; font-style: italic;">"God's love is the foundation of everything."</p>
-                    <p style="color: var(--honey-light); font-size: 0.85rem; margin-top: 5px;">— Forrest Frank</p>
-                </div>
-            </div>
-            
-            <p style="text-align: center; margin-top: 25px; color: var(--purple); font-weight: 600; font-size: 1.1rem;">✨ 365 devotionals like this — one for every day of the year! ✨</p>
-        </section>
-
-        <!-- Music Section -->
-        <div class="section-divider">
-            <span><span class="section-icon">🎵</span>Built-In Music</span>
-        </div>
-        <section style="margin: 0 0 50px; text-align: center;">
-            <p style="color: #666; margin-bottom: 25px;">Every bracelet gives you access to worship music too!</p>
-            
-            <div style="background: white; padding: 30px; border-radius: 25px; max-width: 400px; margin: 0 auto; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcb6CQIjdqKy?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
-            
-            <p style="margin-top: 20px; color: var(--purple); font-weight: 600;">🎧 Listen while you do your daily devo!</p>
-        </section>
-
-        <!-- What's Included -->
+        <!-- What's Included - MOVED UP -->
         <div class="section-divider">
             <span><span class="section-icon">✨</span>What's Included</span>
         </div>
@@ -611,25 +542,106 @@
             
             <!-- 3 Age Groups Highlight -->
             <div style="background: linear-gradient(135deg, var(--honey-light), #FDE68A); padding: 30px; border-radius: 20px; margin-bottom: 30px;">
-                <h3 style="text-align: center; color: var(--honey-dark); font-size: 1.5rem; margin-bottom: 20px;">🎯 3 SEPARATE Devotions — Choose Your Age Group!</h3>
+                <h3 style="text-align: center; color: var(--honey-dark); font-size: 1.5rem; margin-bottom: 20px;">🎯 3 SEPARATE Devotions — Tap to Preview!</h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
-                    <div style="background: white; padding: 20px; border-radius: 15px; text-align: center; border: 3px solid var(--pink);">
+                    <div class="age-card" onclick="showPreview('kids')" style="background: white; padding: 20px; border-radius: 15px; text-align: center; border: 3px solid var(--pink); cursor: pointer; transition: transform 0.2s;">
                         <div style="font-size: 40px;">👧</div>
                         <h4 style="color: var(--pink); margin: 10px 0;">KIDS</h4>
-                        <p style="font-size: 0.85rem; color: #666;">Simple words, fun activities, perfect for little ones!</p>
+                        <p style="font-size: 0.85rem; color: #666;">Simple words, fun activities!</p>
+                        <span style="font-size: 0.75rem; color: var(--pink); font-weight: 600;">👆 Tap to preview</span>
                     </div>
-                    <div style="background: white; padding: 20px; border-radius: 15px; text-align: center; border: 3px solid var(--purple);">
+                    <div class="age-card" onclick="showPreview('teens')" style="background: white; padding: 20px; border-radius: 15px; text-align: center; border: 3px solid var(--purple); cursor: pointer; transition: transform 0.2s;">
                         <div style="font-size: 40px;">🎧</div>
                         <h4 style="color: var(--purple); margin: 10px 0;">TEENS</h4>
-                        <p style="font-size: 0.85rem; color: #666;">Real talk about real life — faith for your world!</p>
+                        <p style="font-size: 0.85rem; color: #666;">Real talk for real life!</p>
+                        <span style="font-size: 0.75rem; color: var(--purple); font-weight: 600;">👆 Tap to preview</span>
                     </div>
-                    <div style="background: white; padding: 20px; border-radius: 15px; text-align: center; border: 3px solid var(--teal);">
+                    <div class="age-card" onclick="showPreview('adults')" style="background: white; padding: 20px; border-radius: 15px; text-align: center; border: 3px solid var(--teal); cursor: pointer; transition: transform 0.2s;">
                         <div style="font-size: 40px;">☕</div>
                         <h4 style="color: var(--teal); margin: 10px 0;">ADULTS</h4>
-                        <p style="font-size: 0.85rem; color: #666;">Deeper study, meaningful reflection for grown-ups!</p>
+                        <p style="font-size: 0.85rem; color: #666;">Deeper study & reflection!</p>
+                        <span style="font-size: 0.75rem; color: var(--teal); font-weight: 600;">👆 Tap to preview</span>
                     </div>
                 </div>
                 <p style="text-align: center; margin-top: 20px; color: var(--honey-dark); font-weight: 600;">📖 365 unique devotionals for EACH age group = 1,095 total devotionals!</p>
+                
+                <!-- Kids Preview -->
+                <div id="kids-preview" class="age-preview" style="display: none; margin-top: 25px; background: white; border-radius: 20px; padding: 25px; border: 3px solid var(--pink);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="color: var(--pink); font-size: 1.3rem;">👧 Kids Devotional Preview</h4>
+                        <button onclick="hidePreview('kids')" style="background: var(--pink); color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; font-size: 1rem;">✕</button>
+                    </div>
+                    <div style="background: #FDF2F8; padding: 20px; border-radius: 15px;">
+                        <div style="text-align: center; margin-bottom: 15px;">
+                            <span style="font-size: 35px;">🌈</span>
+                            <h3 style="color: var(--pink); margin: 8px 0;">God Made You Special!</h3>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 12px; border-left: 4px solid var(--pink); margin-bottom: 15px;">
+                            <p style="font-style: italic; line-height: 1.5;">"I praise you, for I am fearfully and wonderfully made."</p>
+                            <p style="color: var(--pink); font-weight: 600; margin-top: 8px;">— Psalm 139:14 (ESV)</p>
+                        </div>
+                        <div style="background: white; padding: 12px; border-radius: 10px; margin-bottom: 10px;">
+                            <h5 style="color: var(--purple); margin-bottom: 5px;">💭 What Does This Mean?</h5>
+                            <p style="font-size: 0.9rem;">God made YOU and He thinks you're amazing! Your eyes, your smile, your laugh - God made it all and He loves everything about you! 💖</p>
+                        </div>
+                        <div style="background: white; padding: 12px; border-radius: 10px;">
+                            <h5 style="color: var(--pink); margin-bottom: 5px;">⭐ Today's Challenge</h5>
+                            <p style="font-size: 0.9rem;">Look in the mirror and say "God made me special!" Then draw a picture of yourself and write "God loves me!" on it! 🎨</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teens Preview -->
+                <div id="teens-preview" class="age-preview" style="display: none; margin-top: 25px; background: white; border-radius: 20px; padding: 25px; border: 3px solid var(--purple);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="color: var(--purple); font-size: 1.3rem;">🎧 Teens Devotional Preview</h4>
+                        <button onclick="hidePreview('teens')" style="background: var(--purple); color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; font-size: 1rem;">✕</button>
+                    </div>
+                    <div style="background: #F3E8FF; padding: 20px; border-radius: 15px;">
+                        <div style="text-align: center; margin-bottom: 15px;">
+                            <span style="font-size: 35px;">📱</span>
+                            <h3 style="color: var(--purple); margin: 8px 0;">Comparison is a Trap</h3>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 12px; border-left: 4px solid var(--purple); margin-bottom: 15px;">
+                            <p style="font-style: italic; line-height: 1.5;">"For we are his workmanship, created in Christ Jesus for good works."</p>
+                            <p style="color: var(--purple); font-weight: 600; margin-top: 8px;">— Ephesians 2:10 (ESV)</p>
+                        </div>
+                        <div style="background: white; padding: 12px; border-radius: 10px; margin-bottom: 10px;">
+                            <h5 style="color: var(--purple); margin-bottom: 5px;">💭 What Does This Mean?</h5>
+                            <p style="font-size: 0.9rem;">Scrolling through Instagram and feeling like everyone else has it better? That's the comparison trap. God didn't create you to be a copy of someone else — He made you HIS workmanship. That influencer's highlight reel isn't real life. YOUR story matters.</p>
+                        </div>
+                        <div style="background: white; padding: 12px; border-radius: 10px;">
+                            <h5 style="color: var(--pink); margin-bottom: 5px;">⭐ Today's Challenge</h5>
+                            <p style="font-size: 0.9rem;">Unfollow ONE account that makes you feel "less than." Replace it with something that points you to Jesus. Your mental health matters. 🙏</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adults Preview -->
+                <div id="adults-preview" class="age-preview" style="display: none; margin-top: 25px; background: white; border-radius: 20px; padding: 25px; border: 3px solid var(--teal);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="color: var(--teal); font-size: 1.3rem;">☕ Adults Devotional Preview</h4>
+                        <button onclick="hidePreview('adults')" style="background: var(--teal); color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; font-size: 1rem;">✕</button>
+                    </div>
+                    <div style="background: #CCFBF1; padding: 20px; border-radius: 15px;">
+                        <div style="text-align: center; margin-bottom: 15px;">
+                            <span style="font-size: 35px;">⚓</span>
+                            <h3 style="color: var(--teal); margin: 8px 0;">The Theology of Rest</h3>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 12px; border-left: 4px solid var(--teal); margin-bottom: 15px;">
+                            <p style="font-style: italic; line-height: 1.5;">"Come to me, all who labor and are heavy laden, and I will give you rest."</p>
+                            <p style="color: var(--teal); font-weight: 600; margin-top: 8px;">— Matthew 11:28 (ESV)</p>
+                        </div>
+                        <div style="background: white; padding: 12px; border-radius: 10px; margin-bottom: 10px;">
+                            <h5 style="color: var(--purple); margin-bottom: 5px;">💭 What Does This Mean?</h5>
+                            <p style="font-size: 0.9rem;">In a culture that celebrates hustle and productivity, rest feels countercultural — even lazy. But biblical rest isn't the absence of work; it's the presence of trust. When we rest, we declare that the world doesn't depend on us. We acknowledge our limits and God's sovereignty. Sabbath is an act of faith.</p>
+                        </div>
+                        <div style="background: white; padding: 12px; border-radius: 10px;">
+                            <h5 style="color: var(--pink); margin-bottom: 5px;">⭐ Today's Challenge</h5>
+                            <p style="font-size: 0.9rem;">Block 30 minutes today with nothing scheduled. No phone, no tasks. Sit with God. Journal this question: "What am I afraid will happen if I stop?" 📝</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <div class="features">
@@ -666,6 +678,31 @@
             </div>
         </section>
 
+        <!-- Lifestyle Gallery -->
+        <div class="section-divider">
+            <span><span class="section-icon">📸</span>See It In Action</span>
+        </div>
+        <section style="margin: 0 0 50px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <img src="lifestyle1.png" alt="Teens and adults wearing Sweet Stuff faith bracelets" style="width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                <img src="lifestyle2.png" alt="Kids wearing Sweet Stuff faith bracelets" style="width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+            </div>
+        </section>
+
+        <!-- Music Section -->
+        <div class="section-divider">
+            <span><span class="section-icon">🎵</span>Built-In Music</span>
+        </div>
+        <section style="margin: 0 0 50px; text-align: center;">
+            <p style="color: #666; margin-bottom: 25px;">Every bracelet gives you access to worship music too!</p>
+            
+            <div style="background: white; padding: 30px; border-radius: 25px; max-width: 400px; margin: 0 auto; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcb6CQIjdqKy?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            
+            <p style="margin-top: 20px; color: var(--purple); font-weight: 600;">🎧 Listen while you do your daily devo!</p>
+        </section>
+
         <!-- Pricing -->
         <div class="section-divider">
             <span><span class="section-icon">💰</span>Pricing</span>
@@ -690,7 +727,7 @@
         <div class="section-divider">
             <span><span class="section-icon">🛒</span>Order Now</span>
         </div>
-        <section class="order-section" style="margin-top: 0;">
+        <section id="order" class="order-section" style="margin-top: 0;">
             
             <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin: 30px 0;">
                 <!-- Shipping Option -->
@@ -729,5 +766,20 @@
         <p>Made with 💛 by Isley</p>
         <p style="margin-top: 15px;"><a href="https://thesweetstuffdevotions-byte.github.io/The-Sweet-Stuff/">Visit The Sweet Stuff Devotionals</a></p>
     </footer>
+
+    <script>
+        function showPreview(age) {
+            // Hide all previews first
+            document.querySelectorAll('.age-preview').forEach(p => p.style.display = 'none');
+            // Show the selected one
+            document.getElementById(age + '-preview').style.display = 'block';
+            // Scroll to it
+            document.getElementById(age + '-preview').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function hidePreview(age) {
+            document.getElementById(age + '-preview').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
