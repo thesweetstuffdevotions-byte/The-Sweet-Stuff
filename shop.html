@@ -488,13 +488,13 @@
         </section>
 
         <!-- Product -->
-        <section class="products" style="justify-content: center;">
-            <div class="product-card" style="border: 4px solid var(--honey); max-width: 400px;">
+        <section class="products" style="display: flex; justify-content: center;">
+            <div class="product-card" style="border: 4px solid var(--honey); width: 100%; max-width: 600px;">
                 <div class="product-image" style="background: linear-gradient(135deg, var(--honey-light), #FEF3C7);">
                     🍯
                     <span class="product-badge">NFC</span>
                 </div>
-                <div class="product-info">
+                <div class="product-info" style="text-align: center;">
                     <h3 style="color: var(--honey-dark);">The Sweet Stuff Bracelet</h3>
                     <p>Stylish woven faith bracelet with built-in NFC chip. Tap your phone to instantly access 365 daily devotionals, prayer journal, Christian music & more!</p>
                     <span class="reversible-tag">✝️ Wear Your Faith Daily!</span>
@@ -550,39 +550,47 @@
 
         <!-- Pricing -->
         <section class="pricing">
-            <div class="price-tag"><span>$</span>8</div>
-            <p style="font-size: 1.5rem; margin: 10px 0;">per bracelet (shipped!)</p>
-            <div class="shipping-note">📦 $5 bracelet + $3 shipping — Ships anywhere in the US!</div>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+                <div style="background: rgba(255,255,255,0.15); padding: 30px 40px; border-radius: 20px;">
+                    <p style="font-size: 1.2rem; margin-bottom: 10px;">📦 SHIPPED</p>
+                    <div class="price-tag"><span>$</span>8</div>
+                    <p style="font-size: 1rem; opacity: 0.9;">$5 + $3 shipping</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.15); padding: 30px 40px; border-radius: 20px;">
+                    <p style="font-size: 1.2rem; margin-bottom: 10px;">🙌 LOCAL PICKUP</p>
+                    <div class="price-tag"><span>$</span>5</div>
+                    <p style="font-size: 1rem; opacity: 0.9;">Contact us to arrange</p>
+                </div>
+            </div>
+            <div class="shipping-note" style="margin-top: 25px;">Ships anywhere in the US! Or pick up locally!</div>
         </section>
 
         <!-- Order -->
         <section class="order-section">
             <h2>How To Order</h2>
-            <div class="order-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h4>Click "Pay with Venmo" below</h4>
-                        <p>Send $8 per bracelet to @thesweetstuffdevotions</p>
-                    </div>
+            
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin: 30px 0;">
+                <!-- Shipping Option -->
+                <div style="background: var(--honey-light); padding: 25px; border-radius: 20px; flex: 1; min-width: 280px; max-width: 400px;">
+                    <h3 style="color: var(--honey-dark); margin-bottom: 15px;">📦 Ship To Me - $8</h3>
+                    <p style="margin-bottom: 10px;"><strong>1.</strong> Click "Pay with Venmo" below</p>
+                    <p style="margin-bottom: 10px;"><strong>2.</strong> Send $8 per bracelet</p>
+                    <p><strong>3.</strong> In the Venmo note, include:</p>
+                    <p style="margin-left: 20px;">• How many bracelets</p>
+                    <p style="margin-left: 20px;">• Your shipping address</p>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h4>Include in the Venmo note:</h4>
-                        <p>• How many bracelets<br>• Your full shipping address</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h4>We ship it to you! 📦</h4>
-                        <p>Your bracelet arrives and you're ready for daily devotions! 🍯</p>
-                    </div>
+                
+                <!-- Pickup Option -->
+                <div style="background: var(--pink-light); padding: 25px; border-radius: 20px; flex: 1; min-width: 280px; max-width: 400px;">
+                    <h3 style="color: var(--pink); margin-bottom: 15px;">🙌 Local Pickup - $5</h3>
+                    <p style="margin-bottom: 10px;"><strong>1.</strong> Contact us via Venmo or Email</p>
+                    <p style="margin-bottom: 10px;"><strong>2.</strong> Arrange pickup location/time</p>
+                    <p><strong>3.</strong> Pay $5 per bracelet at pickup!</p>
                 </div>
             </div>
 
-            <a href="https://www.venmo.com/u/thesweetstuffdevotions" target="_blank" class="btn btn-venmo">💳 Pay with Venmo - $8</a>
+            <a href="https://www.venmo.com/u/thesweetstuffdevotions" target="_blank" class="btn btn-venmo">💳 Pay with Venmo</a>
+            <a href="mailto:thesweetstuffdevotions@gmail.com?subject=Sweet Stuff Bracelet Order" class="btn btn-email">📧 Email Us</a>
 
             <div class="contact">
                 <p>Questions? Email us at <a href="mailto:thesweetstuffdevotions@gmail.com">thesweetstuffdevotions@gmail.com</a></p>
